@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div>
+         <div class="container">
+             <div class="panel panel-default">
+                <div class="panel-heading">
+                 <h3 class="panel-title">采集人脸信息</h3>
+                </div>
+                <div class="panel-body">
+                <form class="form-horizontal" method="post">
+                        {% csrf_token %}
+                      <div class="form-group">
+                          <label >学生姓名</label>
+                          <input name="name" type="text" class="form-control"  placeholder="学生姓名">
+                      </div>
+                      <button type="submit" class="btn btn-primary">开始采集</button>
+                </form>
+                </div>
+        </div>
+         </div>
+     </div>
+{% endblock %}

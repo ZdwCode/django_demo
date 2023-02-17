@@ -1,0 +1,56 @@
+{% extends 'layout_tech.html' %}
+
+{% block content %}
+<div>
+        <div class="container">
+            <div style="margin-bottom:10px">
+                <a class="btn btn-success" href="/teacher/course/add/">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    新建记录</a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading">
+                      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                      课程信息</div>
+                        <div class="panel-heading">
+                      <form class="form-inline" method="post">
+                          {% csrf_token %}
+                        <div class="form-group">
+                    <label for="exampleInputEmail2">课程名称</label>
+                    <input name="course_name" type="text" class="form-control" id="exampleInputEmail2">
+                        </div>
+                    <button type="submit" class="btn btn-default">查询</button>
+                    </form>
+                    </div>
+                  <!-- Table -->
+                  <table class="table">
+                    <thead>
+                      <tr>
+                            <th>id</th>
+                            <th>课程名称</th>
+                            <th>学分</th>
+                            <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in course_list %}
+                        <tr>
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.name}}</td>
+                            <td>{{item.credit}}</td>
+                            <td>
+                                <a class="btn btn-primary" href="#">编 辑</a>
+                                <a class="btn btn-danger" href="/teacher/course/delete/?nid={{item.id}}">删 除</a>
+                            </td>
+                      </tr>
+                       {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+    </div>
+</div>
+{% endblock %}

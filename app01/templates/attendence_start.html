@@ -1,0 +1,62 @@
+{% extends 'layout_tech.html' %}
+
+{% block content %}
+<div>
+         <div class="container">
+             <div class="panel panel-default">
+                <div class="panel-heading">
+                 <h3 class="panel-title">考勤设置</h3>
+                </div>
+                <div class="panel-body">
+                <form class="form-horizontal" method="post">
+                        {% csrf_token %}
+                      <div class="form-group">
+                          <label>课程号</label>
+                          <input name="class_id" type="text" class="form-control"  placeholder="课程号">
+                      </div>
+                      <div class="form-group">
+                          <label>课程名称</label>
+                          <input name="class_name" type="text" class="form-control"  placeholder="课程名称">
+                      </div>
+                      <button type="submit" class="btn btn-primary">开 始</button>
+                    </form>
+                </div>
+        </div>
+         </div>
+     </div>
+
+
+<div>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading">
+                      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                      考勤记录</div>
+
+                  <!-- Table -->
+                  <table class="table">
+                    <thead>
+                      <tr>
+                            <th>id</th>
+                            <th>课程名称</th>
+                            <th>课程学分</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in course_list %}
+                        <tr>
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.name}}</td>
+                            <td>{{item.credit}}</td>
+                      </tr>
+                       {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'layout_tech.html' %}
+
+{% block content %}
+<div>
+        <div class="container">
+            <div style="margin-bottom:10px">
+                <a class="btn btn-success" href="/teacher/attendence/add/">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    新建记录</a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading">
+                      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                      考勤记录</div>
+                        <div class="panel-heading">
+                      <form class="form-inline" method="post">
+                          {% csrf_token %}
+                        <div class="form-group">
+                        <label for="exampleInputName2">姓名</label>
+                         <input name="student_name" type="text" class="form-control" id="exampleInputName2" >
+                         </div>
+                        <div class="form-group">
+                    <label for="exampleInputEmail2">课程名称</label>
+                    <input name="course_name" type="text" class="form-control" id="exampleInputEmail2">
+                        </div>
+                    <button type="submit" class="btn btn-default">查询</button>
+                    </form>
+                    </div>
+                  <!-- Table -->
+                  <table class="table">
+                    <thead>
+                      <tr>
+                            <th>id</th>
+                            <th>姓名</th>
+                            <th>课程</th>
+                            <th>是否出勤</th>
+                            <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in attendence_list %}
+                        <tr>
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.student_name}}</td>
+                            <td>{{item.class_name}}</td>
+                            <td>{{item.result}}</td>
+                            <td>
+                                <a class="btn btn-primary" href="/teacher/attendence/edit/?nid={{item.id}}">编辑</a>
+                                <a class="btn btn-danger" href="/teacher/attendence/delete/?nid={{item.id}}">删除</a>
+                            </td>
+                      </tr>
+                       {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div>
+        <div class="container">
+            <div style="margin-bottom:10px">
+                <a class="btn btn-success" href="/myadmin/user/add/">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    新建用户</a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading">
+                      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                      用户列表</div>
+
+                  <!-- Table -->
+                  <table class="table">
+                    <thead>
+                      <tr>
+                            <th>id</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年龄</th>
+                            <th>所属学院</th>
+                            <th>电话</th>
+                            <th>用户类型</th>
+                            <th>账号</th>
+                            <th>密码</th>
+                            <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in user_list %}
+                        <tr>
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.name}}</td>
+                            <td>{{item.get_gender_display}}</td>
+                            <td>{{item.age}}</td>
+                            <td>{{item.depart.title}}</td>
+                            <td>{{item.phone}}</td>
+                            <td>{{item.get_type_display}}</td>
+                            <td>{{item.number}}</td>
+                            <td>{{item.password}}</td>
+                            <td>
+                                <a class="btn btn-primary" href="/myadmin/user/edit/?nid={{item.id}}">编辑</a>
+                                <a class="btn btn-danger" href="/myadmin/user/delete/?nid={{item.id}}">删除</a>
+                            </td>
+                      </tr>
+                       {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+    </div>
+</div>
+{% endblock %}

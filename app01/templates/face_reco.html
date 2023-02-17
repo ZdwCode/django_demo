@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div>
+        <div class="container">
+            <div style="margin-bottom:10px">
+                <a class="btn btn-success" href="/myadmin/face/?type=2">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    开始训练</a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading">
+                      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                      考勤记录</div>
+
+                  <!-- Table -->
+                  <table class="table">
+                    <thead>
+                      <tr>
+                            <th>姓名</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in meta %}
+                        <tr>
+                            <th scope="row">{{item.name}}</th>
+                      </tr>
+                       {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+    </div>
+</div>
+{% endblock %}
